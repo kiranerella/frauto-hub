@@ -1,23 +1,20 @@
-export const cars = [
+export const dummyCars = [
   {
-    id: '1',
-    name: '2021 Dodge Charger',
-    price: '$32,000',
-    mileage: '15,000 mi',
-    image: '/file.svg',
+    id: 1,
+    make: 'Honda',
+    model: 'Civic',
+    year: 2020,
+    mileage: 30000,
+    price: 17995,
+    image: '/car1.jpg',
   },
   {
-    id: '2',
-    name: '2022 Ford Mustang GT',
-    price: '$38,500',
-    mileage: '8,000 mi',
-    image: '/globe.svg',
-  },
-  {
-    id: '3',
-    name: '2020 BMW 3 Series',
-    price: '$29,000',
-    mileage: '20,000 mi',
-    image: '/window.svg',
+    id: 2,
+    make: 'Toyota',
+    model: 'Camry',
+    year: 2019,
+    mileage: 45000,
+    price: 16950,
+    image: '/car2.jpg',
   }
-]
+];
