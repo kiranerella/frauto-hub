@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom branding tokens */
 :root {
   --primary: #D30000;
   --secondary: #000000;
