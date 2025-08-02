@@ -4,11 +4,22 @@ import FormInput from '@/components/FormInput';
 
 export default function AppointmentPage() {
   const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const form = e.currentTarget as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const payload = Object.fromEntries(formData.entries());
+
+    await fetch('/api/appointment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+    });
+
     setSubmitted(true);
   };
+
 
   return (
     <section className="max-w-xl mx-auto py-12">
