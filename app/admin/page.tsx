@@ -1,16 +1,56 @@
+'use client';
+import { useEffect, useState } from 'react';
+
+type Appointment = {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  date: string;
+  time: string;
+  createdAt: string;
+};
+
 export default function AdminDashboard() {
+  const [appointments, setAppointments] = useState<Appointment[]>([]);
+
+  useEffect(() => {
+    const load = async () => {
+      const res = await fetch('/api/admin/appointments');
+      const data = await res.json();
+      setAppointments(data);
+    };
+    load();
+  }, []);
+
   return (
-    <section className="max-w-6xl mx-auto py-12">
-      <h1 className="text-3xl font-bold text-primary mb-6">Admin Dashboard</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="p-6 border shadow bg-white rounded-lg">
-          <h2 className="font-semibold text-lg mb-2">New Appointment Requests</h2>
-          <p className="text-gray-600">View and manage upcoming test drives.</p>
-        </div>
-        <div className="p-6 border shadow bg-white rounded-lg">
-          <h2 className="font-semibold text-lg mb-2">Find My Car Leads</h2>
-          <p className="text-gray-600">Review customer interest & car preferences.</p>
-        </div>
+    <section className="py-12 max-w-6xl mx-auto">
+      <h1 className="text-3xl font-bold text-primary mb-8">Admin Dashboard</h1>
+
+      <h2 className="text-xl font-semibold mb-4">Upcoming Appointments</h2>
+      <div className="overflow-x-auto border rounded-lg bg-white shadow">
+        <table className="w-full text-sm">
+          <thead className="bg-gray-100 text-left">
+            <tr>
+              <th className="p-3">Name</th>
+              <th className="p-3">Email</th>
+              <th className="p-3">Phone</th>
+              <th className="p-3">Date</th>
+              <th className="p-3">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {appointments.map((a) => (
+              <tr key={a.id} className="border-t">
+                <td className="p-3">{a.name}</td>
+                <td className="p-3">{a.email}</td>
+                <td className="p-3">{a.phone}</td>
+                <td className="p-3">{a.date}</td>
+                <td className="p-3">{a.time}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   );
