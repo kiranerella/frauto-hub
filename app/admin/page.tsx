@@ -51,6 +51,12 @@ export default function AdminDashboard() {
             ))}
           </tbody>
         </table>
+        <button
+            className="mt-6 px-4 py-2 bg-primary text-white rounded hover:bg-red-700"
+            onClick={() => alert('🔧 Export to CSV coming in next sprint!')}
+        >
+        Export Schedule (CSV)
+        </button>
       </div>
     </section>
   );
